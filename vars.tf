@@ -29,9 +29,12 @@ variable "vnetgwsku" {
   default     = "VpnGw1"
 }
 
-variable "target_vnet_name" {
-  type        = string
-  description = "Name of the target virtual network"
+variable "target_vnet" {
+  type        = object({
+    id = string
+    name = string
+  })
+  description = "The Terraform resource of the target vnet"
 }
 
 variable "local_nets" {

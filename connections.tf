@@ -28,14 +28,9 @@ resource "azurerm_virtual_network_gateway_connection" "connection" {
   }
 }
 
-data "azurerm_virtual_network" "target_vnet" {
-  name                = var.target_vnet_name
-  resource_group_name = var.resource_group
-}
-
 resource "azurerm_virtual_network_peering" "peeringvpn" {
   name                      = "${lower(var.project)}${lower(var.stage)}netpeering"
-  remote_virtual_network_id = data.azurerm_virtual_network.target_vnet.id
+  remote_virtual_network_id = var.target_vnet.id
   resource_group_name       = var.resource_group
   virtual_network_name      = azurerm_virtual_network.vpnnet.name
 
@@ -48,7 +43,7 @@ resource "azurerm_virtual_network_peering" "peeringvpnrev" {
   name                      = "${lower(var.project)}${lower(var.stage)}netpeeringrev"
   remote_virtual_network_id = azurerm_virtual_network.vpnnet.id
   resource_group_name       = var.resource_group
-  virtual_network_name      = var.target_vnet_name
+  virtual_network_name      = var.target_vnet.name
 
   allow_gateway_transit        = false
   allow_forwarded_traffic      = true
