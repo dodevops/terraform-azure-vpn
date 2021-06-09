@@ -42,7 +42,6 @@ The following resources are used by this module:
 - [azurerm_virtual_network_gateway_connection.connection](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network_gateway_connection) (resource)
 - [azurerm_virtual_network_peering.peeringvpn](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network_peering) (resource)
 - [azurerm_virtual_network_peering.peeringvpnrev](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network_peering) (resource)
-- [azurerm_virtual_network.target_vnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/virtual_network) (data source)
 
 ## Required Inputs
 
@@ -96,11 +95,18 @@ Description: Stage for this ressource group
 
 Type: `string`
 
-### target\_vnet\_name
+### target\_vnet
 
-Description: Name of the target virtual network
+Description: The Terraform resource of the target vnet
 
-Type: `string`
+Type:
+
+```hcl
+object({
+    id   = string
+    name = string
+  })
+```
 
 ## Optional Inputs
 
@@ -154,17 +160,9 @@ Default: `"VpnGw1"`
 
 The following outputs are exported:
 
-### location
+### vpn\_ip
 
-Description: The location input variable (can be used for dependency resolution)
-
-### ppg\_id
-
-Description: The ID of the generated proximity placement group
-
-### resource\_group
-
-Description: The name of the generated resource group
+Description: n/a
 <!-- END_TF_DOCS -->
 
 ## Development

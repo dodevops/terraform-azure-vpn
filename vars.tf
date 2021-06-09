@@ -30,8 +30,8 @@ variable "vnetgwsku" {
 }
 
 variable "target_vnet" {
-  type        = object({
-    id = string
+  type = object({
+    id   = string
     name = string
   })
   description = "The Terraform resource of the target vnet"

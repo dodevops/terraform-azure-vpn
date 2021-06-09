@@ -18,12 +18,12 @@ resource "azurerm_virtual_network_gateway_connection" "connection" {
   dynamic "ipsec_policy" {
     for_each = var.ipsec_policy
     content {
-      dh_group = ipsec_policy.value["dh_group"]
-      ike_encryption = ipsec_policy.value["ike_encryption"]
-      ike_integrity = ipsec_policy.value["ike_integrity"]
+      dh_group         = ipsec_policy.value["dh_group"]
+      ike_encryption   = ipsec_policy.value["ike_encryption"]
+      ike_integrity    = ipsec_policy.value["ike_integrity"]
       ipsec_encryption = ipsec_policy.value["ipsec_encryption"]
-      ipsec_integrity = ipsec_policy.value["ipsec_integrity"]
-      pfs_group = ipsec_policy.value["pfs_group"]
+      ipsec_integrity  = ipsec_policy.value["ipsec_integrity"]
+      pfs_group        = ipsec_policy.value["pfs_group"]
     }
   }
 }
