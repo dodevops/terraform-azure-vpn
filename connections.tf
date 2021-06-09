@@ -54,4 +54,6 @@ resource "azurerm_virtual_network_peering" "peeringvpnrev" {
   allow_forwarded_traffic      = true
   allow_virtual_network_access = true
   use_remote_gateways          = true
+
+  depends_on = [azurerm_virtual_network_gateway.vnetgw]
 }
