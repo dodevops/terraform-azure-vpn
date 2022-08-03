@@ -3,7 +3,7 @@ resource "azurerm_virtual_network" "vpnnet" {
     var.gatewaynet
   ]
   location            = var.location
-  name                = "${lower(var.project)}${lower(var.stage)}netvnetworkvpn"
+  name                = "${lower(var.project)}${lower(var.stage)}netvnetworkvpn${var.suffix}"
   resource_group_name = var.resource_group
 }
 
@@ -16,14 +16,14 @@ resource "azurerm_subnet" "gateway" {
 
 resource "azurerm_public_ip" "publicip" {
   location            = var.location
-  name                = "${lower(var.project)}${lower(var.stage)}ipvpn"
+  name                = "${lower(var.project)}${lower(var.stage)}ipvpn${var.suffix}"
   resource_group_name = var.resource_group
   allocation_method   = "Dynamic"
 }
 
 resource "azurerm_virtual_network_gateway" "vnetgw" {
   location            = var.location
-  name                = "${lower(var.project)}${lower(var.stage)}netvirtualgw"
+  name                = "${lower(var.project)}${lower(var.stage)}netvirtualgw${var.suffix}"
   resource_group_name = var.resource_group
   sku                 = var.vnetgwsku
   type                = "Vpn"

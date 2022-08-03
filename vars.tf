@@ -13,6 +13,12 @@ variable "stage" {
   description = "Stage for this ressource group"
 }
 
+variable "suffix" {
+  type        = string
+  default     = ""
+  description = "Additional suffix for this vpn"
+}
+
 variable "gatewaynet" {
   type        = string
   description = "IP network to use for the gateway"
@@ -34,7 +40,7 @@ variable "target_vnet" {
     id   = string
     name = string
   })
-  description = "The Terraform resource of the target vnet"
+  description = "ID and name of the target vnet to connect the VPN vnet to"
 }
 
 variable "local_nets" {

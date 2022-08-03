@@ -97,7 +97,7 @@ Type: `string`
 
 ### target\_vnet
 
-Description: The Terraform resource of the target vnet
+Description: ID and name of the target vnet to connect the VPN vnet to
 
 Type:
 
@@ -147,6 +147,14 @@ Default:
   }
 ]
 ```
+
+### suffix
+
+Description: Additional suffix for this vpn
+
+Type: `string`
+
+Default: `""`
 
 ### vnetgwsku
 

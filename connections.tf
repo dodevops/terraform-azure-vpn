@@ -2,13 +2,13 @@ resource "azurerm_local_network_gateway" "local" {
   address_space       = var.local_nets
   gateway_address     = var.local_gateway_ip
   location            = var.location
-  name                = "${lower(var.project)}${lower(var.stage)}netlocalgw"
+  name                = "${lower(var.project)}${lower(var.stage)}netlocalgw${var.suffix}"
   resource_group_name = var.resource_group
 }
 
 resource "azurerm_virtual_network_gateway_connection" "connection" {
   location                   = var.location
-  name                       = "${lower(var.project)}${lower(var.stage)}netvnconnection"
+  name                       = "${lower(var.project)}${lower(var.stage)}netvnconnection${var.suffix}"
   resource_group_name        = var.resource_group
   type                       = "IPsec"
   virtual_network_gateway_id = azurerm_virtual_network_gateway.vnetgw.id
@@ -29,7 +29,7 @@ resource "azurerm_virtual_network_gateway_connection" "connection" {
 }
 
 resource "azurerm_virtual_network_peering" "peeringvpn" {
-  name                      = "${lower(var.project)}${lower(var.stage)}netpeering"
+  name                      = "${lower(var.project)}${lower(var.stage)}netpeering${var.suffix}"
   remote_virtual_network_id = var.target_vnet.id
   resource_group_name       = var.resource_group
   virtual_network_name      = azurerm_virtual_network.vpnnet.name
@@ -40,7 +40,7 @@ resource "azurerm_virtual_network_peering" "peeringvpn" {
 }
 
 resource "azurerm_virtual_network_peering" "peeringvpnrev" {
-  name                      = "${lower(var.project)}${lower(var.stage)}netpeeringrev"
+  name                      = "${lower(var.project)}${lower(var.stage)}netpeeringrev${var.suffix}"
   remote_virtual_network_id = azurerm_virtual_network.vpnnet.id
   resource_group_name       = var.resource_group
   virtual_network_name      = var.target_vnet.name
