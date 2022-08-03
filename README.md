@@ -156,6 +156,14 @@ Type: `string`
 
 Default: `""`
 
+### use\_remote\_gateways
+
+Description: Use the remote gateway for the peering
+
+Type: `bool`
+
+Default: `true`
+
 ### vnetgwsku
 
 Description: SKU to use for the virtual network gateway

@@ -83,3 +83,9 @@ variable "ipsec_policy" {
   for details
   EOL
 }
+
+variable "use_remote_gateways" {
+  type        = bool
+  default     = true
+  description = "Use the remote gateway for the peering"
+}
